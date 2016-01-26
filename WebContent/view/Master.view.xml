@@ -6,10 +6,18 @@
 		title="{i18n>MasterTitle}" >
 		<List
 			items="{/SalesOrderCollection}" >
-			<StandardListItem
-				type="Active"
-				press="handleListItemPress"
-				title="{SoId}" />
+			<ObjectListItem type="Active"
+							press="handleListItemPress"
+							title="{SoId}"
+							number="{GrossAmount}"
+							numberUnit="{CurrencyCode}">
+				<attributes>
+					<ObjectAttribute text="{BuyerName}" />
+				</attributes>
+				<firstStatus>
+					<ObjectStatus text="{LifecycleStatus}" />
+				</firstStatus>
+			</ObjectListItem>
 		</List>
 	</Page>
 </core:View>
