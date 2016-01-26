@@ -16,12 +16,15 @@
 		</subHeader>
 		<List
 			id="list"
+			mode="{device>/listMode}"
+			select="handleListSelect"
 			items="{/SalesOrderCollection}" >
-			<ObjectListItem type="Active"
-							press="handleListItemPress"
-							title="{SoId}"
-							number="{GrossAmount}"
-							numberUnit="{CurrencyCode}">
+			<ObjectListItem
+				type="{device/>listItemType}"
+				press="handleListItemPress"
+				title="{SoId}"
+				number="{GrossAmount}"
+				numberUnit="{CurrencyCode}">
 				<attributes>
 					<ObjectAttribute text="{BuyerName}" />
 				</attributes>
