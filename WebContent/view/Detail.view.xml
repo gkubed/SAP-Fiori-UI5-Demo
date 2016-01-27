@@ -1,16 +1,6 @@
-<core:View
-	controllerName="sap.ui.demo.myFiori.view.Detail"
-	xmlns="sap.m"
-	xmlns:form="sap.ui.layout.form"
-	xmlns:core="sap.ui.core" >
-	<Page
-		title="{i18n>DetailTitle}"
-		showNavButton="{device>isPhone}"
-		navButtonPress="handleNavButtonPress" >
-		<ObjectHeader
-			title="{SoId}"
-			number="{GrossAmount}"
-			numberUnit="{CurrencyCode}">
+<core:View controllerName="sap.ui.demo.myFiori.view.Detail" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" >
+	<Page title="{i18n>DetailTitle}" class="sapUiFioriObjectPage" showNavButton="{device>isPhone}" navButtonPress="handleNavButtonPress" >
+		<ObjectHeader title="{SoId}" number="{GrossAmount}" numberUnit="{CurrencyCode}">
 			<attributes>
 				<ObjectAttribute text="{BuyerName}" />
 				<ObjectAttribute text="{CreatedByBp}" />
@@ -46,14 +36,42 @@
 				</IconTabFilter>
 			</items>
 		</IconTabBar>
+		<Table headerText="{i18n>LineItemTableHeader}" items="{LineItems}" >
+			<columns>
+				<Column>
+					<header>
+						<Label text="Product" />
+					</header>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" >
+					<header>
+						<Label text="Delivery Date" />
+					</header>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" >
+					<header>
+						<Label text="Quantity" />
+					</header>
+				</Column>
+				<Column hAlign="Right" >
+					<header>
+						<Label text="Price" />
+					</header>
+				</Column>
+			</columns>
+			<ColumnListItem type="Navigation" press="handleLineItemPress" >
+				<cells>
+					<ObjectIdentifier title="{ProductId}" />
+					<Text text="{ path:'DeliveryDate', formatter:'sap.ui.demo.myFiori.util.Formatter.date' }"/>
+					<Text text="{ path:'Quantity', formatter:'sap.ui.demo.myFiori.util.Formatter.quantity' }"/>
+					<ObjectNumber number="{GrossAmount}" numberUnit="{CurrencyCode}" />
+				</cells>
+			</ColumnListItem>
+		</Table>
 		<footer>
 			<Bar>
 				<contentRight>
-					<Button
-						text="{i18n>ApproveButtonText}"
-						type="Accept"
-						icon="sap-icon://accept"
-						press="handleApprove" />
+					<Button text="{i18n>ApproveButtonText}" type="Accept" icon="sap-icon://accept" press="handleApprove" />
 				</contentRight>
 			</Bar>
 		</footer>

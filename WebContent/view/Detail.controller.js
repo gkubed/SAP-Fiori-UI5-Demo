@@ -28,5 +28,10 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Detail", {
 				
 			bundle.getText("ApproveDialogTitle")
 		); 
+	},
+	
+	handleLineItemPress : function (evt) {
+		var context = evt.getSource().getBindingContext();
+		this.nav.to("LineItem", context);
 	}
 });
