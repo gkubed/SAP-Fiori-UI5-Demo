@@ -1,3 +1,4 @@
+<!DOCTYPE xml>
 <core:View
 	controllerName="sap.ui.demo.myFiori.view.Master"
 	xmlns="sap.m"
